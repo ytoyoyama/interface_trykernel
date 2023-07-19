@@ -1,7 +1,7 @@
 ﻿#include <trykernel.h>
 #include "device.h"
-#include "..\i2c\dev_i2c.h"
-#include "..\adc\dev_adc.h"
+#include "../i2c/dev_i2c.h"
+#include "../adc/dev_adc.h"
 
 /* デバイス登録テーブル*/
 T_DEV_DEF   dev_tbl[DEV_NUM] = {
