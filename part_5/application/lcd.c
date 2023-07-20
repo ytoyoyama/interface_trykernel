@@ -6,7 +6,7 @@
 #include "app.h"
 
 void task_lcd(INT stacd, void *exinf);              // タスクの実行関数
-UB  tskstk_lcd[1024];                               // タスクのスタック領域
+UW  tskstk_lcd[1024/sizeof(UW)];                    // タスクのスタック領域
 ID  tskid_lcd;                                      // タスクID
 
 /* タスク生成情報 */

@@ -6,7 +6,7 @@
 #include <knldef.h>
 
 void initsk(INT stacd, void *exinf);                // 初期タスクの実行プログラム
-UB  tskstk_ini[256];                                // 初期タスクのスタック
+UW  tskstk_ini[256/sizeof(UW)];                     // 初期タスクのスタック
 ID  tskid_ini;                                      // 初期タスクのID番号
 
 T_CTSK  ctsk_ini = {

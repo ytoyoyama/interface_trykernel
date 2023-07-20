@@ -1,7 +1,7 @@
 ﻿#include <trykernel.h>
 
-UB  tskstk_1[1024];         /* タスク1のスタック */
-ID  tskid_1;                /* タスク1のID番号 */
+UW  tskstk_1[1024/sizeof(UW)];  /* タスク1のスタック */
+ID  tskid_1;                    /* タスク1のID番号 */
 
 /* タスク1生成情報 */
 void task_1(INT stacd, void *exinf);
@@ -13,8 +13,8 @@ T_CTSK  ctsk_1 = {
     .bufptr     = tskstk_1,
 };
 
-UB  tskstk_2[1024];         /* タスク2のスタック */
-ID  tskid_2;                /* タスク2のID番号 */
+UW  tskstk_2[1024/sizeof(UW)];  /* タスク2のスタック */
+ID  tskid_2;                    /* タスク2のID番号 */
 
 /* タスク2生成情報 */
 void task_2(INT stacd, void *exinf);

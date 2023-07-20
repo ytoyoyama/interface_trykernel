@@ -1,8 +1,8 @@
 ﻿#include <trykernel.h>
 
 /* ボタン検出タスク生成情報 */
-UB  tskstk_btn[1024];         /* ボタン検出タスクのスタック */
-ID  tskid_btn;              /* ボタン検出タスクのID番号 */
+UW  tskstk_btn[1024/sizeof(UW)];    /* ボタン検出タスクのスタック */
+ID  tskid_btn;                      /* ボタン検出タスクのID番号 */
 void task_btn(INT stacd, void *exinf);
 T_CTSK  ctsk_btn = {
     .tskatr     = TA_HLNG | TA_RNG3 | TA_USERBUF,   // タスク属性
@@ -13,8 +13,8 @@ T_CTSK  ctsk_btn = {
 };
 
 /* LED制御タスク生成情報 */
-UB  tskstk_led[1024];         /* LED制御タスクのスタック */
-ID  tskid_led;                /* LED制御タスクのID番号 */
+UW  tskstk_led[1024/sizeof(UW)];    /* LED制御タスクのスタック */
+ID  tskid_led;                      /* LED制御タスクのID番号 */
 void task_led(INT stacd, void *exinf);
 T_CTSK  ctsk_led = {
     .tskatr     = TA_HLNG | TA_RNG3 | TA_USERBUF,   // タスク属性

@@ -9,8 +9,8 @@ void *ctx_tbl[MAX_FNC_ID];          // 保存された実行コンテキスト�
 
 /* タスクのスタック */
 #define STACK_SIZE  1024
-UW   stack_1[STACK_SIZE];
-UW   stack_2[STACK_SIZE];
+UW   stack_1[STACK_SIZE/sizeof(UW)];
+UW   stack_2[STACK_SIZE/sizeof(UW)];
 
 /* 時間待ち関数 */
 static void delay_ms( UINT ms)

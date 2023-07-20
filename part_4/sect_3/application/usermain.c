@@ -16,8 +16,8 @@ T_CSEM  csem = {
 };
 
 /* ボタン検出タスク生成情報 */
-UB  tskstk_btn[1024];       // ボタン検出タスクのスタック
-ID  tskid_btn;              // ボタン検出タスクのID番号
+UW  tskstk_btn[1024/sizeof(UW)];    // ボタン検出タスクのスタック
+ID  tskid_btn;                      // ボタン検出タスクのID番号
 void task_btn(INT stacd, void *exinf);
 T_CTSK  ctsk_btn = {
     .tskatr     = TA_HLNG | TA_RNG3 | TA_USERBUF,   // タスク属性
@@ -28,8 +28,8 @@ T_CTSK  ctsk_btn = {
 };
 
 /* LED制御タスク1生成情報 */
-UB  tskstk_led1[1024];         // LED制御タスク1のスタック
-ID  tskid_led1;                // LED制御タスク1のID番号
+UW  tskstk_led1[1024/sizeof(UW)];   // LED制御タスク1のスタック
+ID  tskid_led1;                     // LED制御タスク1のID番号
 void task_led1(INT stacd, void *exinf);
 T_CTSK  ctsk_led1 = {
     .tskatr     = TA_HLNG | TA_RNG3 | TA_USERBUF,   // タスク属性
@@ -40,8 +40,8 @@ T_CTSK  ctsk_led1 = {
 };
 
 /* LED制御タスク2生成情報 */
-UB  tskstk_led2[1024];         // LED制御タスク2のスタック
-ID  tskid_led2;                // LED制御タスク2のID番号
+UW  tskstk_led2[1024/sizeof(UW)];   // LED制御タスク2のスタック
+ID  tskid_led2;                     // LED制御タスク2のID番号
 void task_led2(INT stacd, void *exinf);
 T_CTSK  ctsk_led2 = {
     .tskatr     = TA_HLNG | TA_RNG3 | TA_USERBUF,   // タスク属性

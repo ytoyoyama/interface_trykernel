@@ -5,7 +5,7 @@
 #include "app.h"
 
 void task_gsns(INT stacd, void *exinf);             // タスクの実行関数
-UB  tskstk_gsns[1024];                              // タスクのスタック領域
+UW  tskstk_gsns[1024/sizeof(UW)];                   // タスクのスタック領域
 ID  tskid_gsns;                                     // タスクID
 
 /* タスク生成情報 */
