@@ -99,7 +99,7 @@ void task_lcd(INT stacd, void *exinf)
             } else if(gsns_data & GSNS_UP) {
                 disp_text((UB*)"UP      \n");
             } else if(gsns_data & GSNS_DOWN) {
-                disp_text((UB*)"WOWN    \n");
+                disp_text((UB*)"DOWN    \n");
             } else if(gsns_data & GSNS_FORWARD) {
                 disp_text((UB*)"FORWARD \n");
             } else if(gsns_data & GSNS_BACKWARD) {
