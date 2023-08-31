@@ -52,6 +52,7 @@ ER tk_wai_sem( ID semid, INT cnt, TMO tmout )
             /* TCBの各種情報を変更する */
             cur_task->state  = TS_WAIT;      // タスクの状態を待ち状態に変更
             cur_task->waifct = TWFCT_SEM;    // 待ち要因を設定
+            cur_task->waiobj = semid;        // 待ちセマフォIDを設定
             cur_task->waitim = ((tmout == TMO_FEVR)? tmout: tmout + TIMER_PERIOD);    // 待ち時間を設定
             cur_task->waisem = cnt;
             cur_task->waierr = &err;
@@ -82,7 +83,7 @@ ER tk_sig_sem( ID semid, INT cnt )
         semcb->semcnt += cnt;                                       // 資源の返却
         if(semcb->semcnt <= semcb->maxsem) {
             for( tcb = wait_queue; tcb != NULL; tcb = tcb->next) {  // レディキューのタスクを確認
-                if( tcb->waifct == TWFCT_SEM) {
+                if((tcb->waifct == TWFCT_SEM)&&(tcb->waiobj == semid)) {
                     if( semcb->semcnt >= tcb->waisem) {             // 要求資源数を満たしていれば実行可能状態へ
                         semcb->semcnt -= tcb->waisem;
                         tqueue_remove_entry( &wait_queue, tcb);     // タスクをウェイトキューから外す

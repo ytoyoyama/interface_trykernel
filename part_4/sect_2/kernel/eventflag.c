@@ -54,7 +54,7 @@ ER tk_set_flg( ID flgid, UINT setptn )
         flgcb->flgptn |= setptn;            // フラグのセット
 
         for( tcb = wait_queue; tcb != NULL; tcb = tcb->next) {
-            if( tcb->waifct == TWFCT_FLG) {
+            if((tcb->waifct == TWFCT_FLG) && (tcb->waiobj == flgid)) {
                 if(check_flag(flgcb->flgptn, tcb->waiptn, tcb->wfmode)) {   // 条件成立の確認
                     tqueue_remove_entry( &wait_queue, tcb);                 // タスクをウェイトキューから外す
                     tcb->state	= TS_READY;
@@ -131,6 +131,7 @@ ER tk_wai_flg( ID flgid, UINT waiptn, UINT wfmode, UINT *p_flgptn, TMO tmout )
             /* TCBの各種情報を変更する */
             cur_task->state     = TS_WAIT;      // タスクの状態を待ち状態に変更
             cur_task->waifct    = TWFCT_FLG;    // 待ち要因を設定
+            cur_task->waiobj    = flgid;        // 待ちイベントフラグIDを設定
             cur_task->waitim    = ((tmout == TMO_FEVR)? tmout: tmout + TIMER_PERIOD);    // 待ち時間を設定
             cur_task->waiptn    = waiptn;
             cur_task->wfmode    = wfmode;

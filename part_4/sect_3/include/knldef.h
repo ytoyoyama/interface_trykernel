@@ -41,6 +41,7 @@ typedef struct st_tcb {
 
     /* 時間待ち情報 */
     TWFCT   waifct;             // 待ち要因
+    ID      waiobj;             // 待ち対象オブジェクト
     RELTIM  waitim;             // 待ち時間
     ER      *waierr;            // 待ち解除のエラーコード
 
