@@ -11,9 +11,10 @@ TCB *wait_queue;    /* 時間待ち状態のタスクの待ち行列(ウェイ�
 /* システムタイマ割込みハンドラ */
 void systimer_handler(void)
 {
-    TCB     *tcb;
+    TCB     *tcb, *next;
 
-    for( tcb = wait_queue; tcb != NULL; tcb = tcb->next) {
+    for( tcb = wait_queue; tcb != NULL; tcb = next) {
+        next = tcb->next;
         if(tcb->waitim == TMO_FEVR) {
             continue;
         } else if(tcb->waitim > TIMER_PERIOD) {
